@@ -1,0 +1,17 @@
+2023-10-08 21:43:08,131 | INFO | Abstract adding started
+2023-10-08 21:43:13,047 | ERROR | ❌ Precessing failed. Id = %s %s
+2023-10-08 21:43:14,916 | INFO | checked= 0
+2023-10-08 21:43:14,916 | INFO | abstract success count= 0
+2023-10-08 21:43:14,916 | INFO | abstract fail count= 0
+2023-10-08 21:43:14,916 | INFO | date success count= 0
+2023-10-08 21:43:14,916 | INFO | date fail count= 0
+2023-10-08 21:43:17,847 | ERROR | ❌ Precessing failed. Id = %s %s
+2023-10-08 21:43:22,670 | ERROR | ❌ Precessing failed. Id = %s %s
+2023-10-08 21:43:26,020 | ERROR | ❌ Precessing failed. Id = %s %s
+2023-10-08 21:43:32,598 | ERROR | ❌ Precessing failed. Id = %s %s
+2023-10-08 21:43:40,369 | ERROR | ❌ Precessing failed. Id = %s %s
+2023-10-08 21:43:45,976 | ERROR | ❌ Precessing failed. Id = %s %s
+2023-10-08 21:43:49,506 | ERROR | ❌ Precessing failed. Id = %s %s
+2023-10-08 21:43:52,696 | ERROR | ❌ Precessing failed. Id = %s %s
+2023-10-08 21:43:56,281 | ERROR | ❌ Precessing failed. Id = %s %s
+2023-10-08 21:43:58,119 | INFO | Abstract adding finished

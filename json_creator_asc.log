@@ -1,0 +1,216 @@
+2023-10-08 12:26:00,205 | INFO | Json creator started
+2023-10-08 12:28:15,374 | INFO | Json creator started
+2023-10-08 12:28:19,042 | INFO | Directory created successfully! Dir: t0
+2023-10-08 12:29:13,429 | INFO | Json creator started
+2023-10-08 12:29:17,451 | ERROR | Error processing: 2105.10257
+2023-10-08 12:29:19,456 | INFO | checked= 1
+2023-10-08 12:29:19,456 | INFO | success count= 0
+2023-10-08 12:29:19,456 | INFO | fail count= 1
+2023-10-08 12:29:20,311 | ERROR | Error processing: 2003.13396
+2023-10-08 12:29:22,992 | ERROR | Error processing: 2012.12342
+2023-10-08 12:29:25,951 | ERROR | Error processing: 2003.14346
+2023-10-08 12:29:28,577 | ERROR | Error processing: 2101.09206
+2023-10-08 12:29:31,282 | ERROR | Error processing: 2101.09204
+2023-10-08 12:29:34,099 | ERROR | Error processing: 2003.13371
+2023-10-08 12:29:36,805 | ERROR | Error processing: 2003.13394
+2023-10-08 12:29:39,284 | ERROR | Error processing: 2003.13390
+2023-10-08 12:29:42,223 | ERROR | Error processing: 2003.13393
+2023-10-08 12:29:45,266 | ERROR | Error processing: 2003.13388
+2023-10-08 12:29:47,332 | INFO | checked= 11
+2023-10-08 12:29:47,332 | INFO | success count= 0
+2023-10-08 12:29:47,332 | INFO | fail count= 11
+2023-10-08 12:29:48,284 | ERROR | Error processing: 2004.00986
+2023-10-08 12:29:50,824 | ERROR | Error processing: 2004.00706
+2023-10-08 12:29:53,585 | ERROR | Error processing: 2004.00372
+2023-10-08 12:29:56,158 | ERROR | Error processing: 2004.01258
+2023-10-08 12:29:58,440 | ERROR | Error processing: 2004.03497
+2023-10-08 12:30:01,777 | ERROR | Error processing: 2005.03091
+2023-10-08 12:30:04,689 | ERROR | Error processing: 2004.03345
+2023-10-08 12:30:07,138 | ERROR | Error processing: 2003.13380
+2023-10-08 12:30:09,408 | ERROR | Error processing: 2004.11120
+2023-10-08 12:30:12,225 | ERROR | Error processing: 2004.01005
+2023-10-08 12:30:14,141 | INFO | checked= 21
+2023-10-08 12:30:14,141 | INFO | success count= 0
+2023-10-08 12:30:14,142 | INFO | fail count= 21
+2023-10-08 12:30:15,237 | ERROR | Error processing: 2004.00577
+2023-10-08 12:30:17,844 | ERROR | Error processing: 2003.13379
+2023-10-08 12:30:20,764 | ERROR | Error processing: 2004.08212
+2023-10-08 12:30:23,170 | ERROR | Error processing: 2003.13430
+2023-10-08 12:30:25,731 | ERROR | Error processing: 2004.00707
+2023-10-08 12:30:28,352 | ERROR | Error processing: 2004.11118
+2023-10-08 12:30:31,131 | ERROR | Error processing: 2003.13574
+2023-10-08 12:30:33,935 | ERROR | Error processing: 2003.13425
+2023-10-08 12:30:36,763 | ERROR | Error processing: 2005.03096
+2023-10-08 12:30:39,310 | ERROR | Error processing: 2004.06626
+2023-10-08 12:30:41,112 | INFO | checked= 31
+2023-10-08 12:30:41,112 | INFO | success count= 0
+2023-10-08 12:30:41,113 | INFO | fail count= 31
+2023-10-08 12:30:41,898 | ERROR | Error processing: 2004.00109
+2023-10-08 12:30:44,714 | ERROR | Error processing: 2003.13652
+2023-10-08 12:30:47,372 | ERROR | Error processing: 2004.02747
+2023-10-08 12:30:50,009 | ERROR | Error processing: 2004.03449
+2023-10-08 12:30:52,948 | ERROR | Error processing: 2003.13814
+2023-10-08 12:30:55,494 | ERROR | Error processing: 2004.06632
+2023-10-08 12:30:58,069 | ERROR | Error processing: 2003.13421
+2023-10-08 12:31:00,676 | ERROR | Error processing: 2003.13418
+2023-10-08 12:31:03,817 | ERROR | Error processing: 2003.13417
+2023-10-08 12:31:06,394 | ERROR | Error processing: 2003.13786
+2023-10-08 12:31:08,232 | INFO | checked= 41
+2023-10-08 12:31:08,232 | INFO | success count= 0
+2023-10-08 12:31:08,232 | INFO | fail count= 41
+2023-10-08 12:31:09,267 | ERROR | Error processing: 2003.13416
+2023-10-08 12:31:12,251 | ERROR | Error processing: 2003.14309
+2023-10-08 12:31:15,020 | ERROR | Error processing: 2004.11887
+2023-10-08 12:31:17,615 | ERROR | Error processing: 2005.03466
+2023-10-08 12:31:33,460 | INFO | Json creator started
+2023-10-08 12:32:23,686 | ERROR | Error processing: 2105.10257
+2023-10-08 12:32:25,745 | INFO | checked= 1
+2023-10-08 12:32:25,746 | INFO | success count= 0
+2023-10-08 12:32:25,746 | INFO | fail count= 1
+2023-10-08 12:32:26,722 | ERROR | Error processing: 2003.13396
+2023-10-08 12:33:29,549 | INFO | Json creator started
+2023-10-08 12:33:53,368 | ERROR | Error processing: 2105.10257
+2023-10-08 12:33:55,210 | INFO | checked= 1
+2023-10-08 12:33:55,211 | INFO | success count= 0
+2023-10-08 12:33:55,211 | INFO | fail count= 1
+2023-10-08 12:34:10,156 | ERROR | Error processing: 2003.13396
+2023-10-08 12:35:36,033 | INFO | Json creator started
+2023-10-08 12:35:50,132 | INFO | checked= 1
+2023-10-08 12:35:50,133 | INFO | success count= 1
+2023-10-08 12:35:50,133 | INFO | fail count= 0
+2023-10-08 12:35:56,635 | ERROR | Error processing: 2003.13396
+2023-10-08 12:36:00,500 | ERROR | Error processing: 2003.14346
+2023-10-08 12:36:02,855 | ERROR | Error processing: 2101.09206
+2023-10-08 12:36:05,147 | ERROR | Error processing: 2101.09204
+2023-10-08 12:36:47,985 | INFO | checked= 11
+2023-10-08 12:36:47,985 | INFO | success count= 7
+2023-10-08 12:36:47,986 | INFO | fail count= 4
+2023-10-08 12:36:51,190 | ERROR | Error processing: 2004.00986
+2023-10-08 12:36:56,657 | ERROR | Error processing: 2004.00706
+2023-10-08 12:37:04,378 | ERROR | Error processing: 2003.13380
+2023-10-08 12:37:08,206 | ERROR | Error processing: 2004.01005
+2023-10-08 12:37:10,052 | INFO | checked= 21
+2023-10-08 12:37:10,052 | INFO | success count= 13
+2023-10-08 12:37:10,053 | INFO | fail count= 8
+2023-10-08 12:37:12,067 | ERROR | Error processing: 2003.13379
+2023-10-08 12:37:15,607 | ERROR | Error processing: 2003.13430
+2023-10-08 12:37:18,261 | ERROR | Error processing: 2004.00707
+2023-10-08 12:38:19,807 | INFO | Json creator started
+2023-10-08 12:38:23,321 | INFO | Directory created successfully! Dir: t0
+2023-10-08 12:38:24,102 | INFO | checked= 1
+2023-10-08 12:38:24,103 | INFO | success count= 1
+2023-10-08 12:38:24,103 | INFO | fail count= 0
+2023-10-08 12:38:34,602 | INFO | checked= 11
+2023-10-08 12:38:34,602 | INFO | success count= 11
+2023-10-08 12:38:34,602 | INFO | fail count= 0
+2023-10-08 12:38:44,853 | INFO | checked= 21
+2023-10-08 12:38:44,853 | INFO | success count= 21
+2023-10-08 12:38:44,853 | INFO | fail count= 0
+2023-10-08 12:38:55,102 | INFO | checked= 31
+2023-10-08 12:38:55,102 | INFO | success count= 31
+2023-10-08 12:38:55,102 | INFO | fail count= 0
+2023-10-08 12:39:05,374 | INFO | checked= 41
+2023-10-08 12:39:05,374 | INFO | success count= 41
+2023-10-08 12:39:05,374 | INFO | fail count= 0
+2023-10-08 12:39:15,871 | INFO | checked= 51
+2023-10-08 12:39:15,871 | INFO | success count= 51
+2023-10-08 12:39:15,871 | INFO | fail count= 0
+2023-10-08 12:39:26,133 | INFO | checked= 61
+2023-10-08 12:39:26,133 | INFO | success count= 61
+2023-10-08 12:39:26,133 | INFO | fail count= 0
+2023-10-08 12:39:36,537 | INFO | checked= 71
+2023-10-08 12:39:36,537 | INFO | success count= 71
+2023-10-08 12:39:36,537 | INFO | fail count= 0
+2023-10-08 12:39:47,089 | INFO | checked= 81
+2023-10-08 12:39:47,089 | INFO | success count= 81
+2023-10-08 12:39:47,089 | INFO | fail count= 0
+2023-10-08 12:39:57,345 | INFO | checked= 91
+2023-10-08 12:39:57,345 | INFO | success count= 91
+2023-10-08 12:39:57,345 | INFO | fail count= 0
+2023-10-08 12:40:06,676 | INFO | checked= 100
+2023-10-08 12:40:06,676 | INFO | success count= 100
+2023-10-08 12:40:06,677 | INFO | fail count= 0
+2023-10-08 12:40:06,677 | INFO | Json creator finished
+2023-10-08 13:10:31,298 | INFO | Json creator started
+2023-10-08 13:10:35,117 | INFO | Directory created successfully! Dir: t0
+2023-10-08 13:10:36,020 | INFO | checked= 1
+2023-10-08 13:10:36,021 | INFO | success count= 1
+2023-10-08 13:10:36,021 | INFO | fail count= 0
+2023-10-08 14:42:29,583 | INFO | Json creator started
+2023-10-08 14:42:37,732 | INFO | Directory created successfully! Dir: loval_v1
+2023-10-08 14:42:38,528 | INFO | checked= 1
+2023-10-08 14:42:38,528 | INFO | success count= 1
+2023-10-08 14:42:38,528 | INFO | fail count= 0
+2023-10-08 14:50:53,565 | ERROR | Error processing: 2003.13873
+2023-10-08 14:59:47,563 | INFO | checked= 1001
+2023-10-08 14:59:47,564 | INFO | success count= 1000
+2023-10-08 14:59:47,564 | INFO | fail count= 1
+2023-10-08 15:16:34,614 | INFO | checked= 2001
+2023-10-08 15:16:34,616 | INFO | success count= 2000
+2023-10-08 15:16:34,616 | INFO | fail count= 1
+2023-10-08 15:33:21,017 | INFO | checked= 3001
+2023-10-08 15:33:21,018 | INFO | success count= 3000
+2023-10-08 15:33:21,018 | INFO | fail count= 1
+2023-10-08 15:50:10,160 | INFO | checked= 4001
+2023-10-08 15:50:10,161 | INFO | success count= 4000
+2023-10-08 15:50:10,162 | INFO | fail count= 1
+2023-10-08 16:06:54,418 | INFO | checked= 5001
+2023-10-08 16:06:54,421 | INFO | success count= 5000
+2023-10-08 16:06:54,421 | INFO | fail count= 1
+2023-10-08 16:23:45,808 | INFO | checked= 6001
+2023-10-08 16:23:45,812 | INFO | success count= 6000
+2023-10-08 16:23:45,812 | INFO | fail count= 1
+2023-10-08 16:40:59,070 | INFO | checked= 7001
+2023-10-08 16:40:59,073 | INFO | success count= 7000
+2023-10-08 16:40:59,073 | INFO | fail count= 1
+2023-10-08 16:57:44,621 | INFO | checked= 8001
+2023-10-08 16:57:44,622 | INFO | success count= 8000
+2023-10-08 16:57:44,622 | INFO | fail count= 1
+2023-10-08 17:14:40,379 | INFO | checked= 9001
+2023-10-08 17:14:40,383 | INFO | success count= 9000
+2023-10-08 17:14:40,383 | INFO | fail count= 1
+2023-10-08 17:31:26,925 | INFO | checked= 10001
+2023-10-08 17:31:26,928 | INFO | success count= 10000
+2023-10-08 17:31:26,929 | INFO | fail count= 1
+2023-10-08 17:48:04,576 | INFO | checked= 11001
+2023-10-08 17:48:04,579 | INFO | success count= 11000
+2023-10-08 17:48:04,579 | INFO | fail count= 1
+2023-10-08 18:04:52,930 | INFO | checked= 12001
+2023-10-08 18:04:52,933 | INFO | success count= 12000
+2023-10-08 18:04:52,933 | INFO | fail count= 1
+2023-10-08 18:22:02,050 | INFO | checked= 13001
+2023-10-08 18:22:02,054 | INFO | success count= 13000
+2023-10-08 18:22:02,054 | INFO | fail count= 1
+2023-10-08 18:39:33,510 | INFO | checked= 14001
+2023-10-08 18:39:33,513 | INFO | success count= 14000
+2023-10-08 18:39:33,513 | INFO | fail count= 1
+2023-10-08 18:59:03,216 | INFO | checked= 15001
+2023-10-08 18:59:03,220 | INFO | success count= 15000
+2023-10-08 18:59:03,220 | INFO | fail count= 1
+2023-10-08 19:18:41,953 | INFO | checked= 16001
+2023-10-08 19:18:41,957 | INFO | success count= 16000
+2023-10-08 19:18:41,958 | INFO | fail count= 1
+2023-10-08 19:42:15,108 | INFO | checked= 17001
+2023-10-08 19:42:15,111 | INFO | success count= 17000
+2023-10-08 19:42:15,111 | INFO | fail count= 1
+2023-10-08 20:06:35,580 | INFO | checked= 18001
+2023-10-08 20:06:35,586 | INFO | success count= 18000
+2023-10-08 20:06:35,586 | INFO | fail count= 1
+2023-10-08 20:38:28,202 | INFO | checked= 19001
+2023-10-08 20:38:28,211 | INFO | success count= 19000
+2023-10-08 20:38:28,213 | INFO | fail count= 1
+2023-10-08 21:02:42,222 | INFO | checked= 20001
+2023-10-08 21:02:42,228 | INFO | success count= 20000
+2023-10-08 21:02:42,228 | INFO | fail count= 1
+2023-10-08 21:26:22,531 | INFO | checked= 21001
+2023-10-08 21:26:22,535 | INFO | success count= 21000
+2023-10-08 21:26:22,535 | INFO | fail count= 1
+2023-10-08 21:44:55,365 | INFO | checked= 22001
+2023-10-08 21:44:55,368 | INFO | success count= 22000
+2023-10-08 21:44:55,369 | INFO | fail count= 1
+2023-10-08 22:01:58,996 | INFO | checked= 23001
+2023-10-08 22:01:59,000 | INFO | success count= 23000
+2023-10-08 22:01:59,000 | INFO | fail count= 1
+2023-10-08 22:18:51,509 | INFO | checked= 24001
+2023-10-08 22:18:51,511 | INFO | success count= 24000
+2023-10-08 22:18:51,511 | INFO | fail count= 1
