@@ -46,14 +46,16 @@ def run(args, logger):
 
     paper_ids = get_not_abstract_added_papers(conn, cur, args.processing_limit)
 
-    for i in range(len(paper_ids)):
+    loaded_count = len(paper_ids)
+    logger.info("Loaded = %s", loaded_count)
+    for i in range(loaded_count):
+        paper_id = paper_ids[i][0]
         try:
-            paper_id = paper_ids[i][0]
             url = abs_base_url + paper_id
             # print ("processing url=",url)
             page = requests.get(url)
             soup = BeautifulSoup(page.content, 'html.parser')
-            abstract = process_for_abstract(paper_id, soup);
+            abstract = process_for_abstract(paper_id, soup, logger);
 
             # abstract
             if abstract:
@@ -65,14 +67,14 @@ def run(args, logger):
                 abstract_fail_count += 1
 
             # submission date
-            submission_date = process_for_date(paper_id, soup)
+            submission_date = process_for_date(paper_id, soup, logger)
             if submission_date:
                 update_paper_date(conn, cur, paper_id, submission_date)
                 date_success_count += 1
             else:
                 date_fail_count += 1
         except Exception as e:
-            logger.error("\r❌ Precessing failed. Id = %s %s".format(paper_id, e))
+            logger.error("\r❌ Precessing failed. Id = %s %s", paper_id, e)
             conn, cur = open_database(args.db_host, args.db_username, args.db_password)
 
         if i % args.logs_per_count == 0:
@@ -84,7 +86,7 @@ def run(args, logger):
 
     logger.info(
         "checked= %s  a.success= %s  a.fail= %s  d.success= %s d.fail= %s",
-        len(paper_ids),
+        loaded_count,
         abstract_success_count, abstract_fail_count, date_success_count, date_fail_count)
 
     close_database(conn, cur)
