@@ -56,6 +56,15 @@ ALTER TABLE paper_section ADD CONSTRAINT paper_section_paper_id_fkey FOREIGN KEY
 ```
 2. Update the `schema` name in file `db/db_utils.py`
 
+# Tasks
+
+## 0. Check database status
+```shell
+python3 main.py --task=status \
+  --db_host=<_host_url_> --db_username=<_username_> --db_password=<_password_>
+```
+
+
 ## 1. Initial paper information extractor
 
 yet to be added
