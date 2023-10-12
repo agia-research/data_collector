@@ -32,7 +32,7 @@ def get_logger(log_file):
 
 if __name__ == '__main__':
 
-    args = arg_parser.parse_args()
+    parser, args = arg_parser.parse_args()
     logging.info('Args : %s', args)
 
     if args.task == 'break_sections':
@@ -61,3 +61,6 @@ if __name__ == '__main__':
 
     if args.task == 'status':
         show_chart(args)
+
+    if args.task == 'help':
+        parser.print_help()

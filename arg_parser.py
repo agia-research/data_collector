@@ -5,7 +5,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
 
     # task
-    parser.add_argument("--task", type=str, help="break_sections,download,json_creator,...")
+    parser.add_argument("--task", type=str, help="Task name : break_sections,download,json_creator,...")
 
     # db
     parser.add_argument("--db_host", type=str, help="Database host url")
@@ -26,4 +26,4 @@ def parse_args():
     parser.add_argument("--items_limit_in_file", type=int, default=1000, help="Number of papers in a single file")
     parser.add_argument("--output_file", type=str, default="output", help="Output file name")
 
-    return parser.parse_args()
+    return parser, parser.parse_args()
