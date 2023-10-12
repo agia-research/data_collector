@@ -27,9 +27,9 @@ def close_database(conn, cur):
 def get_not_downloaded_papers(conn, cur, order_type, limit, offset=0):
     global schema
     cur.execute(
-        '''SELECT paper_id, download_url FROM ''' + schema + '''.paper where stage=-1 order by submission_date %s  
-        limit %s offset %s''',
-        (order_type, limit, offset))
+        '''SELECT paper_id, download_url FROM ''' + schema + '''.paper where stage=-1 
+        order by submission_date ''' + order_type + ''' limit %s offset %s''',
+        (limit, offset))
     return cur.fetchall()
 
 
@@ -38,8 +38,8 @@ def get_not_section_extracted_papers(conn, cur, order_type, limit, offset=0):
     cur.execute(
         '''select p.paper_id, pt.text from ''' + schema + '''.paper p join ''' + schema + '''.paper_text pt on 
         p.paper_id = pt.paper_id  where p.stage = 1 and p.abstract_added=true and (p.section_extracted is null or 
-        p.section_extracted=false) order by p.submission_date %s limit %s offset %s''',
-        (order_type, limit, offset))
+        p.section_extracted=false) order by p.submission_date ''' + order_type + ''' limit %s offset %s''',
+        (limit, offset))
     return cur.fetchall()
 
 
@@ -47,8 +47,9 @@ def get_not_section_extracted_paper_ids(conn, cur, order_type, limit, offset=0):
     global schema
     cur.execute(
         '''select p.paper_id from ''' + schema + '''.paper p where p.stage = 1 and p.abstract_added=true and (
-        p.section_extracted is null or p.section_extracted=false) order by p.submission_date %s limit %s offset %s''',
-        (order_type, limit, offset))
+        p.section_extracted is null or p.section_extracted=false) order by p.submission_date ''' + order_type + '''
+         limit %s offset %s''',
+        (limit, offset))
     return cur.fetchall()
 
 
@@ -56,18 +57,18 @@ def get_section_extracted_paper_ids(conn, cur, dataset_version, order_type, limi
     global schema
     cur.execute(
         '''select p.paper_id, p.name, p.tags, p.submission_date from ''' + schema + '''.paper p  where 
-        p.section_extracted=true and (p.dataset_version <> %s or p.dataset_version is null) order by p.submission_date 
-        %s limit %s offset %s''',
-        (dataset_version, order_type, limit, offset))
+        p.section_extracted=true and (p.dataset_version <> %s or p.dataset_version is null) 
+        order by p.submission_date ''' + order_type + ''' limit %s offset %s''',
+        (dataset_version, limit, offset))
     return cur.fetchall()
 
 
 def get_not_abstract_added_papers(conn, cur, order_type, limit, offset=0):
     global schema
     cur.execute(
-        '''SELECT paper_id FROM ''' + schema + '''.paper where abstract_added is null or abstract_added=false order by submission_date 
-        %s limit %s offset %s''',
-        (order_type, limit, offset))
+        '''SELECT paper_id FROM ''' + schema + '''.paper where abstract_added is null or abstract_added=false 
+        order by submission_date ''' + order_type + ''' limit %s offset %s''',
+        (limit, offset))
     return cur.fetchall()
 
 
@@ -76,7 +77,8 @@ def get_not_abstract_added_papers(conn, cur, order_type, limit, offset=0):
 def get_paper_text(conn, cur, paper_id):
     global schema
     cur.execute(
-        '''select p.paper_id, pt.text from ''' + schema + '''.paper p join ''' + schema + '''.paper_text pt on p.paper_id = pt.paper_id  where p.paper_id = %s''',
+        '''select p.paper_id, pt.text from ''' + schema + '''.paper p join ''' + schema + '''.paper_text pt on 
+        p.paper_id = pt.paper_id  where p.paper_id = %s''',
         (paper_id,))
     return cur.fetchone()
 
