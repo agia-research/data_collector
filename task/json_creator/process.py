@@ -7,7 +7,7 @@ def create_json_files(args, logger):
     global success_count
     global failed_count
     conn, cur = open_database(args.db_host, args.db_username, args.db_password)
-    papers = get_section_extracted_paper_ids(conn, cur, args.dataset_version, args.order_type, args.processing_limit)
+    papers = get_section_extracted_paper_ids(conn, cur, args.dataset_version, args.order_type, args.processing_limit, args.offset)
     loaded_count = len(papers)
     items_in_file = []
     file_number = 1

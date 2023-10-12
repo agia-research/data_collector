@@ -12,7 +12,7 @@ def process_paper_parse_sections(args, logger):
 
     conn, cur = open_database(args.db_host, args.db_username, args.db_password)
 
-    unprocessed_paper_ids = get_not_section_extracted_paper_ids(conn, cur, args.processing_limit)
+    unprocessed_paper_ids = get_not_section_extracted_paper_ids(conn, cur,args.order_type, args.processing_limit, args.offset)
 
     length = len(unprocessed_paper_ids)
     logger.info("total loaded: %s", length)

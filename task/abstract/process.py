@@ -44,7 +44,7 @@ def run(args, logger):
 
     conn, cur = open_database(args.db_host, args.db_username, args.db_password)
 
-    paper_ids = get_not_abstract_added_papers(conn, cur, args.processing_limit)
+    paper_ids = get_not_abstract_added_papers(conn, cur, args.order_type, args.processing_limit, args.offset)
 
     loaded_count = len(paper_ids)
     logger.info("Loaded = %s", loaded_count)
