@@ -7,7 +7,7 @@ def remove_newcommand_lines_and_comments(text):
     updated_text = []
 
     for line in lines:
-        if (substring not in line) and (line.strip().startswith('%')):
+        if (substring not in line) and (not line.strip().startswith('%')):
             updated_text.append(line)
 
     return '\n'.join(updated_text)
