@@ -19,7 +19,7 @@ def process_paper_d_z_t(args, logger):
 
     conn, cur = open_database(args.db_host, args.db_username, args.db_password)
 
-    unprocessed_papers = get_not_downloaded_papers(conn, cur, args.order_type, args.processing_limit,  args.offset)
+    unprocessed_papers = get_not_downloaded_papers(conn, cur, args.order_type, args.processing_limit, args.offset)
 
     length = len(unprocessed_papers)
     logger.info("total loaded: %s", length)

@@ -62,6 +62,7 @@ def get_section_extracted_papers(conn, cur, dataset_version, order_type, limit, 
         (dataset_version, limit, offset))
     return cur.fetchall()
 
+
 def get_section_extracted_paper_by_id(conn, cur, paper_id):
     global schema
     cur.execute(

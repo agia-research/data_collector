@@ -32,7 +32,7 @@ def create_json_files(args, logger):
                 save_to_file(output_file + "_" + str(file_number) + ".jsonl", line)
                 file_number += 1
                 items_in_file = []
-            if not args.paper_id: # update dataset version only if testing
+            if not args.paper_id:  # update dataset version only if testing
                 update_paper_dataset_version(conn, cur, paper_id, args.dataset_version)
             success_count += 1
         except Exception as e:

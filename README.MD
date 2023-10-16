@@ -14,6 +14,7 @@ Tasks are,
 ## Setting up database
 
 1. PostgreSQL database is needed with these 3 tables
+
 ```sql
 CREATE TABLE paper (
 	paper_id varchar(20) NOT NULL,
@@ -54,11 +55,13 @@ CREATE TABLE paper_section (
 -- paper_section foreign keys
 ALTER TABLE paper_section ADD CONSTRAINT paper_section_paper_id_fkey FOREIGN KEY (paper_id) REFERENCES paper(paper_id);
 ```
+
 2. Update the `schema` name in file `db/db_utils.py`
 
 # Tasks
 
 ## Paramters
+
 ```shell
   --task                Task name : break_sections,download,json_creator,...
   --db_host             Database host url
@@ -77,11 +80,11 @@ ALTER TABLE paper_section ADD CONSTRAINT paper_section_paper_id_fkey FOREIGN KEY
 ```
 
 ## 0. Check database status
+
 ```shell
 python3 main.py --task=status \
   --db_host=<_host_url_> --db_username=<_username_> --db_password=<_password_>
 ```
-
 
 ## 1. Initial paper information extractor
 

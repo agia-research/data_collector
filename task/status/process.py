@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 from db.db_utils import close_database, get_paper_work_status_count, get_paper_count, get_total_paper_count, \
-  open_database
+    open_database
 
 
 def get_bar_values(args):

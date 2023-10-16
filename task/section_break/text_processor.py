@@ -13,6 +13,20 @@ def remove_newcommand_lines_and_comments(text):
     return '\n'.join(updated_text)
 
 
+def remove_unwanted_lines(text):
+    substrings = [
+        '%', '\\newcommand', '\\def', '\\usepackage', '\\biblio', '\\providecommand',
+    ]
+    lines = text.split('\n')
+    updated_text = []
+
+    for line in lines:
+        if not any(line.strip().startswith(sub) for sub in substrings):
+            updated_text.append(line)
+
+    return '\n'.join(updated_text)
+
+
 def get_indices(text, substring):
     indices = []
     start_index = 0
@@ -55,8 +69,8 @@ def remove_text_by_indices(original_text, start_index, end_index):
 
 
 def remove_figures_and_tables(input_text):
-    input_text = remove_newcommand_lines_and_comments(
-        input_text)  # removing comments and new commands since it interefere with table and figure search
+    input_text = remove_unwanted_lines(
+        input_text)  # removing comments, new commands and unwanted lines since it interfere with table and figure search and node creation gets too long
 
     indices = get_table_indices(input_text)
     indices += get_figure_indices(input_text)
