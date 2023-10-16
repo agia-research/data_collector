@@ -1,6 +1,18 @@
 import numpy as np
 
 
+def remove_newcommand_lines(text):
+    substring = '\\newcommand'
+    lines = text.split('\n')
+    updated_text = []
+
+    for line in lines:
+        if substring not in line:
+            updated_text.append(line)
+
+    return '\n'.join(updated_text)
+
+
 def get_indices(text, substring):
     indices = []
     start_index = 0
@@ -43,6 +55,7 @@ def remove_text_by_indices(original_text, start_index, end_index):
 
 
 def remove_figures_and_tables(input_text):
+    input_text = remove_newcommand_lines(input_text) # removing new command since it interefere with table and figure search
     indices = get_table_indices(input_text)
     indices += get_figure_indices(input_text)
     t = input_text
