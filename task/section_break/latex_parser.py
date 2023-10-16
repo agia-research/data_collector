@@ -8,47 +8,46 @@ node_parser = LatexNodes2Text()
 def get_text_from_body_group(nodes):
     text = ''
     for n in nodes:
-
-            if str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexCharsNode'>":
-                try:
-                    text += node_parser.chars_node_to_text(n)
-                except Exception as e:
-                    print(e)
-            elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexGroupNode'>":
-                try:
-                    text += node_parser.group_node_to_text(n)
-                except Exception as e:
-                    print(e)
-            # elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexCommentNode'>":
-            #
-            elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexMacroNode'>":
-                try:
-                    text += node_parser.macro_node_to_text(n)
-                except Exception as e:
-                    print(e)
-            elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexEnvironmentNode'>":
-                try:
-                    text += node_parser.environment_node_to_text(n)
-                except Exception as e:
-                    print(e)
-            elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexSpecialsNode'>":
-                try:
-                    text += node_parser.specials_node_to_text(n)
-                except Exception as e:
-                    print(e)
-            elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexMathNode'>":
-                try:
-                    text += node_parser.math_node_to_text(n)
-                except Exception as e:
-                    print(e)
+        if str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexCharsNode'>":
+            try:
+                text += node_parser.chars_node_to_text(n)
+            except:
+                pass
+        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexGroupNode'>":
+            try:
+                text += node_parser.group_node_to_text(n)
+            except Exception as e:
+                pass
+        # elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexCommentNode'>":
+        #
+        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexMacroNode'>":
+            try:
+                text += node_parser.macro_node_to_text(n)
+            except Exception as e:
+                pass
+        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexEnvironmentNode'>":
+            try:
+                text += node_parser.environment_node_to_text(n)
+            except Exception as e:
+                pass
+        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexSpecialsNode'>":
+            try:
+                text += node_parser.specials_node_to_text(n)
+            except Exception as e:
+                pass
+        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexMathNode'>":
+            try:
+                text += node_parser.math_node_to_text(n)
+            except Exception as e:
+                pass
     return text
 
 
 def find_section_name(macro_node):
     name = node_parser.node_to_text(macro_node)
     if name:
-        #s = '§ Introduction'
-        #s[2:] = 'Introduction'
+        # s = '§ Introduction'
+        # s[2:] = 'Introduction'
         return name.strip()[2:].title()
     else:
         return None
