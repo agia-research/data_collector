@@ -8,20 +8,39 @@ node_parser = LatexNodes2Text()
 def get_text_from_body_group(nodes):
     text = ''
     for n in nodes:
-        if str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexCharsNode'>":
-            text += node_parser.chars_node_to_text(n)
-        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexGroupNode'>":
-            text += node_parser.group_node_to_text(n)
-        # elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexCommentNode'>":
-        #
-        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexMacroNode'>":
-            text += node_parser.macro_node_to_text(n)
-        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexEnvironmentNode'>":
-            text += node_parser.environment_node_to_text(n)
-        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexSpecialsNode'>":
-            text += node_parser.specials_node_to_text(n)
-        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexMathNode'>":
-            text += node_parser.math_node_to_text(n)
+
+            if str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexCharsNode'>":
+                try:
+                    text += node_parser.chars_node_to_text(n)
+                except Exception as e:
+                    print(e)
+            elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexGroupNode'>":
+                try:
+                    text += node_parser.group_node_to_text(n)
+                except Exception as e:
+                    print(e)
+            # elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexCommentNode'>":
+            #
+            elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexMacroNode'>":
+                try:
+                    text += node_parser.macro_node_to_text(n)
+                except Exception as e:
+                    print(e)
+            elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexEnvironmentNode'>":
+                try:
+                    text += node_parser.environment_node_to_text(n)
+                except Exception as e:
+                    print(e)
+            elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexSpecialsNode'>":
+                try:
+                    text += node_parser.specials_node_to_text(n)
+                except Exception as e:
+                    print(e)
+            elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexMathNode'>":
+                try:
+                    text += node_parser.math_node_to_text(n)
+                except Exception as e:
+                    print(e)
     return text
 
 
