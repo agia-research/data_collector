@@ -28,7 +28,7 @@ def process_paper_parse_sections(args, logger):
         try:
             paper_text = remove_figures_and_tables(paper_text)
             sec_map = func_timeout(args.timeout, parse_latex, args=(paper_text,))
-            sec_index = 1  # 0 is given to abstract and it is added by a seperate process
+            sec_index = 1  # 0 is given to abstract and it is added by a separate process
             for sec in sec_map:
                 add_paper_section_to_db(conn, cur, paper_id, sec.strip(), sec_index, None, sec_map[sec].strip())
                 sec_index += 1
