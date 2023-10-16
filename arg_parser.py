@@ -20,6 +20,7 @@ def parse_args():
     parser.add_argument("--offset", type=int, default=0, help="Starting index of processing")
     parser.add_argument("--logs_per_count", type=int, default=100, help="Number of papers to process")
     parser.add_argument("--timeout", type=int, default=60, help="Number of papers to process")
+    parser.add_argument("--paper_id", type=str, help="Specific paper id for processing")
 
     # json creator params
     parser.add_argument("--dataset_version", type=str, default="test_v0", help="Dataset version of json creation")

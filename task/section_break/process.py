@@ -3,6 +3,7 @@ from func_timeout import FunctionTimedOut, func_timeout
 from db.db_utils import open_database, get_not_section_extracted_paper_ids, get_paper_text, add_paper_section_to_db, \
     update_paper_work_status, close_database
 from task.section_break.latex_parser import parse_latex
+from task.section_break.text_processor import remove_figures_and_tables
 from util.common import get_percentage
 
 
@@ -12,7 +13,11 @@ def process_paper_parse_sections(args, logger):
 
     conn, cur = open_database(args.db_host, args.db_username, args.db_password)
 
-    unprocessed_paper_ids = get_not_section_extracted_paper_ids(conn, cur,args.order_type, args.processing_limit, args.offset)
+    if args.paper_id:
+        unprocessed_paper_ids = [(args.paper_id,)]
+    else:
+        unprocessed_paper_ids = get_not_section_extracted_paper_ids(conn, cur, args.order_type, args.processing_limit,
+                                                                    args.offset)
 
     length = len(unprocessed_paper_ids)
     logger.info("total loaded: %s", length)
@@ -21,14 +26,17 @@ def process_paper_parse_sections(args, logger):
         _, paper_text = get_paper_text(conn, cur, paper_id)
 
         try:
-            # sec_map = parse_latex(paper_text)
+            paper_text = remove_figures_and_tables(paper_text)
             sec_map = func_timeout(args.timeout, parse_latex, args=(paper_text,))
             sec_index = 1  # 0 is given to abstract and it is added by a seperate process
             for sec in sec_map:
                 add_paper_section_to_db(conn, cur, paper_id, sec.strip(), sec_index, None, sec_map[sec].strip())
                 sec_index += 1
-            section_parsed_success_count += 1
-            update_paper_work_status(conn, cur, paper_id, 'section_extracted', True)
+            if len(sec_map) > 0:
+                section_parsed_success_count += 1
+                update_paper_work_status(conn, cur, paper_id, 'section_extracted', True)
+            else:
+                section_parsed_fail_count += 1
         except FunctionTimedOut:
             logger.error("\r❌ Precessing failed by Timeout. Id = {}".format(paper_id))
             section_parsed_fail_count += 1

@@ -53,13 +53,21 @@ def get_not_section_extracted_paper_ids(conn, cur, order_type, limit, offset=0):
     return cur.fetchall()
 
 
-def get_section_extracted_paper_ids(conn, cur, dataset_version, order_type, limit, offset=0):
+def get_section_extracted_papers(conn, cur, dataset_version, order_type, limit, offset=0):
     global schema
     cur.execute(
         '''select p.paper_id, p.name, p.tags, p.submission_date from ''' + schema + '''.paper p  where 
         p.section_extracted=true and (p.dataset_version <> %s or p.dataset_version is null) 
         order by p.submission_date ''' + order_type + ''' limit %s offset %s''',
         (dataset_version, limit, offset))
+    return cur.fetchall()
+
+def get_section_extracted_paper_by_id(conn, cur, paper_id):
+    global schema
+    cur.execute(
+        '''select p.paper_id, p.name, p.tags, p.submission_date from ''' + schema + '''.paper p  where 
+        p.paper_id = %s''',
+        (paper_id,))
     return cur.fetchall()
 
 

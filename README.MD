@@ -69,6 +69,7 @@ ALTER TABLE paper_section ADD CONSTRAINT paper_section_paper_id_fkey FOREIGN KEY
   --offset              Starting index of processing
   --logs_per_count      Number of papers to process
   --timeout             Number of papers to process
+  --paper_id            Specific paper id for processing
   --dataset_version     Dataset version of json creation
   --items_limit_in_file Number of papers in a single file
   --output_file         Output file name

@@ -1,4 +1,5 @@
-from db.db_utils import open_database, get_section_extracted_paper_ids, get_paper_sections, update_paper_dataset_version
+from db.db_utils import open_database, get_section_extracted_papers, get_paper_sections, update_paper_dataset_version, \
+    get_section_extracted_paper_by_id
 from task.json_creator.paper_data import create_map
 from util.file_util import list_to_jsonline, save_to_file, create_directory
 
@@ -6,8 +7,14 @@ from util.file_util import list_to_jsonline, save_to_file, create_directory
 def create_json_files(args, logger):
     global success_count
     global failed_count
+
     conn, cur = open_database(args.db_host, args.db_username, args.db_password)
-    papers = get_section_extracted_paper_ids(conn, cur, args.dataset_version, args.order_type, args.processing_limit, args.offset)
+
+    if args.paper_id:
+        papers = get_section_extracted_paper_by_id(conn, cur, args.paper_id)
+    else:
+        papers = get_section_extracted_papers(conn, cur, args.dataset_version, args.order_type, args.processing_limit,
+                                              args.offset)
     loaded_count = len(papers)
     items_in_file = []
     file_number = 1
@@ -25,7 +32,8 @@ def create_json_files(args, logger):
                 save_to_file(output_file + "_" + str(file_number) + ".jsonl", line)
                 file_number += 1
                 items_in_file = []
-            update_paper_dataset_version(conn, cur, paper_id, args.dataset_version)
+            if not args.paper_id: # update dataset version only if testing
+                update_paper_dataset_version(conn, cur, paper_id, args.dataset_version)
             success_count += 1
         except Exception as e:
             failed_count += 1

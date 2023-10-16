@@ -1,22 +1,38 @@
 import pylatexenc.latexwalker as latexwalker
+from pylatexenc.latex2text import LatexNodes2Text
 from pylatexenc.latexwalker import LatexWalker
 
+node_parser = LatexNodes2Text()
 
-def get_text_from_body_group(body_group):
-    text = ""
-    for node in body_group:
-        if str(node.__class__) == "<class 'pylatexenc.latexwalker.LatexCharsNode'>":
-            text += node.chars
+
+def get_text_from_body_group(nodes):
+    text = ''
+    for n in nodes:
+        if str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexCharsNode'>":
+            text += node_parser.chars_node_to_text(n)
+        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexGroupNode'>":
+            text += node_parser.group_node_to_text(n)
+        # elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexCommentNode'>":
+        #
+        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexMacroNode'>":
+            text += node_parser.macro_node_to_text(n)
+        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexEnvironmentNode'>":
+            text += node_parser.environment_node_to_text(n)
+        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexSpecialsNode'>":
+            text += node_parser.specials_node_to_text(n)
+        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexMathNode'>":
+            text += node_parser.math_node_to_text(n)
     return text
 
 
 def find_section_name(macro_node):
-    if (str(macro_node.nodeargd.argnlist[2].__class__) == "<class 'pylatexenc.latexwalker.LatexGroupNode'>"):
-        nodes = macro_node.nodeargd.argnlist[2].nodelist
-        for n in nodes:
-            if str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexCharsNode'>":
-                return n.chars
-    return None
+    name = node_parser.node_to_text(macro_node)
+    if name:
+        #s = '§ Introduction'
+        #s[2:] = 'Introduction'
+        return name.strip()[2:].title()
+    else:
+        return None
 
 
 def break_sections(section_heads, body_groups):
@@ -29,23 +45,25 @@ def break_sections(section_heads, body_groups):
     return section_map
 
 
-def get_flat_nodes(nodes, collected=[]):
+def get_flat_nodes(nodes):
+    node_list = []
     for n in nodes:
         if str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexCharsNode'>":
-            collected.append(n)
-        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexGroupNode'>":
-            collected.append(get_flat_nodes(n.nodelist, collected))
-        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexCommentNode'>":
-            collected.append(n)
+            node_list.append(n)
+        # elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexCommentNode'>":
+        #     node_list.append(n)
         elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexMacroNode'>":
-            collected.append(n)
-        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexEnvironmentNode'>":
-            collected.append(get_flat_nodes(n.nodelist, collected))
+            node_list.append(n)
         elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexSpecialsNode'>":
-            collected.append(n)
+            node_list.append(n)
+
+        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexGroupNode'>":
+            node_list += get_flat_nodes(n.nodelist)
+        elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexEnvironmentNode'>":
+            node_list += get_flat_nodes(n.nodelist)
         elif str(n.__class__) == "<class 'pylatexenc.latexwalker.LatexMathNode'>":
-            collected.append(get_flat_nodes(n.nodelist, collected))
-    return collected
+            node_list += get_flat_nodes(n.nodelist)
+    return node_list
 
 
 def parse_latex(t):
@@ -57,8 +75,8 @@ def parse_latex(t):
 
     section_node_indexes = []
 
-    intial_nodes, pos, len_ = parsed_latex.get_latex_nodes()
-    nodes = get_flat_nodes(intial_nodes, [])
+    initial_nodes, pos, len_ = parsed_latex.get_latex_nodes()
+    nodes = get_flat_nodes(initial_nodes)
     for i in range(len(nodes)):
         node = nodes[i]
         if isinstance(node, latexwalker.LatexMacroNode):
