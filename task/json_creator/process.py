@@ -19,7 +19,7 @@ def create_json_files(args, logger):
     items_in_file = []
     file_number = 1
     create_directory(args.dataset_version, logger)
-    output_file = args.dataset_version + "/" + args.output_file
+    output_file = args.dataset_version + "/" + args.output_file + "_" + str(args.offset)
     for i in range(loaded_count):
         paper = papers[i]
         paper_id = paper[0]
@@ -29,7 +29,7 @@ def create_json_files(args, logger):
             items_in_file.append(obj)
             if ((i > 0 and i % args.items_limit_in_file == 0) or i == loaded_count - 1):
                 line = list_to_jsonline(items_in_file)
-                save_to_file(output_file + "_" + str(file_number) + ".jsonl", line)
+                save_to_file(output_file + "_" + str(file_number * args.items_limit_in_file) + ".jsonl", line)
                 file_number += 1
                 items_in_file = []
             if not args.paper_id:  # update dataset version only if testing
