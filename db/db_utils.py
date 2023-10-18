@@ -95,7 +95,7 @@ def get_paper_text(conn, cur, paper_id):
 def get_paper_sections(conn, cur, paper_id):
     global schema
     cur.execute(
-        '''select ps.section_name, ps.text from agia.paper_section ps where ps.paper_id = %s order by section_index''',
+        '''select ps.section_name, ps.generalized_section_name, ps.text from agia.paper_section ps where ps.paper_id = %s order by section_index''',
         (paper_id,))
     return cur.fetchall()
 

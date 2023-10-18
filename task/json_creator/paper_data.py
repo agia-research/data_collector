@@ -21,16 +21,19 @@ def create_map(paper, sections):
     obj['submission_date'] = paper[3].isoformat()
 
     section_names = []
+    generalized_section_names = []
     section_map = {}
     abstract = None
     for i in range(len(sections)):
         s = sections[i]
         if i != 0:
             section_names.append(s[0])
-            section_map[s[0]] = s[1]
+            generalized_section_names.append(s[1])
+            section_map[s[0]] = s[2]
         else:
-            abstract = s[1]
+            abstract = s[2]
     obj['abstract'] = abstract
     obj['article'] = section_map
     obj['section_names'] = section_names
+    obj['generalized_section_names'] = generalized_section_names
     return obj
