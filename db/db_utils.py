@@ -57,9 +57,8 @@ def get_section_extracted_papers(conn, cur, dataset_version, order_type, limit, 
     global schema
     cur.execute(
         '''select p.paper_id, p.name, p.tags, p.submission_date from ''' + schema + '''.paper p  where 
-        p.section_extracted=true and (p.dataset_version <> %s or p.dataset_version is null) 
-        order by p.submission_date ''' + order_type + ''' limit %s offset %s''',
-        (dataset_version, limit, offset))
+        p.section_extracted=true order by p.submission_date ''' + order_type + ''' limit %s offset %s''',
+        (limit, offset))
     return cur.fetchall()
 
 
