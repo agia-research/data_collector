@@ -18,8 +18,8 @@ def create_json_files(args, logger):
     loaded_count = len(papers)
     items_in_file = []
     file_number = 1
-    create_directory(args.dataset_version, logger)
-    output_file = "../"+args.dataset_version + "/" + args.output_file + "_" + str(args.offset)
+    create_directory("../" + args.dataset_version, logger)
+    output_file = "../" + args.dataset_version + "/" + args.output_file + "_" + str(args.offset)
     for i in range(loaded_count):
         paper = papers[i]
         paper_id = paper[0]
