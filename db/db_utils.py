@@ -65,7 +65,7 @@ def get_raw_data_papers(conn, cur, dataset_version, order_type, limit, offset=0)
     global schema
     cur.execute(
         '''select p.paper_id, p.name, p.tags, p.submission_date from ''' + schema + '''.paper p 
-         join paper_text pt on p.paper_id =pt.paper_id where pt."text" is not null order by p.submission_date ''' + order_type + ''' limit %s offset %s''',
+         join agia.paper_text pt on p.paper_id =pt.paper_id where pt."text" is not null order by p.submission_date ''' + order_type + ''' limit %s offset %s''',
         (limit, offset))
     return cur.fetchall()
 
