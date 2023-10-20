@@ -61,6 +61,95 @@ def get_section_extracted_papers(conn, cur, dataset_version, order_type, limit, 
         (limit, offset))
     return cur.fetchall()
 
+def get_section_extracted_top_papers(conn, cur, dataset_version, order_type, limit, offset=0):
+    global schema
+    cur.execute(
+        '''select p.paper_id, p.name, p.tags, p.submission_date from ''' + schema + '''.paper p  where 
+        p.paper_id in (select
+            distinct paper_id
+          from
+            agia.paper_section
+          where
+            paper_id in (
+            select
+              paper_id
+            from
+              agia.paper_section
+            where
+              generalized_section_name = 'introduction')
+            and paper_id in (
+            select
+              paper_id
+            from
+              agia.paper_section
+            where
+              generalized_section_name = 'related_work')
+            and paper_id in (
+            select
+              paper_id
+            from
+              agia.paper_section
+            where
+              generalized_section_name = 'methodology')
+            and paper_id in (
+            select
+              paper_id
+            from
+              agia.paper_section
+            where
+              generalized_section_name = 'results')
+            and paper_id in (
+            select
+              paper_id
+            from
+              agia.paper_section
+            where
+              generalized_section_name = 'conclusion'))''')
+    return cur.fetchall()
+
+def get_evaluating_paper_ids(conn, cur):
+    cur.execute(
+        '''select
+            distinct paper_id
+          from
+            agia.paper_section
+          where
+            paper_id in (
+            select
+              paper_id
+            from
+              agia.paper_section
+            where
+              generalized_section_name = 'introduction')
+            and paper_id in (
+            select
+              paper_id
+            from
+              agia.paper_section
+            where
+              generalized_section_name = 'related_work')
+            and paper_id in (
+            select
+              paper_id
+            from
+              agia.paper_section
+            where
+              generalized_section_name = 'methodology')
+            and paper_id in (
+            select
+              paper_id
+            from
+              agia.paper_section
+            where
+              generalized_section_name = 'results')
+            and paper_id in (
+            select
+              paper_id
+            from
+              agia.paper_section
+            where
+              generalized_section_name = 'conclusion')''')
+    return cur.fetchall()
 
 def get_section_extracted_paper_by_id(conn, cur, paper_id):
     global schema
