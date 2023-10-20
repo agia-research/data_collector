@@ -7,6 +7,7 @@ import arg_parser
 from task.abstract.process import run as abstract_run
 from task.download.process import run as download_run
 from task.json_creator.process import run as json_creator_run
+from task.raw_json_creator.process import run as raw_json_creator_run
 from task.section_break.process import run as section_break_run
 from task.status.process import show_chart as show_chart
 
@@ -52,6 +53,12 @@ if __name__ == '__main__':
         logger.info("Json creator started")
         json_creator_run(args, logger)
         logger.info("Json creator finished")
+
+    if args.task == 'raw_json_creator':
+        logger = get_logger('json_creator_' + args.order_type + '.log')
+        logger.info("Raw Json creator started")
+        raw_json_creator_run(args, logger)
+        logger.info("Raw Json creator finished")
 
     if args.task == 'abstract':
         logger = get_logger('abstract_' + args.order_type + '.log')

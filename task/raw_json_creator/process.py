@@ -1,0 +1,57 @@
+from db.db_utils import open_database, get_section_extracted_paper_by_id, get_raw_data_papers, get_paper_text, \
+    get_paper_abstract
+from task.json_creator.paper_data import create_raw_map
+from util.file_util import list_to_jsonline, save_to_file, create_directory
+
+
+def create_json_files(args, logger):
+    global success_count
+    global failed_count
+
+    conn, cur = open_database(args.db_host, args.db_username, args.db_password)
+
+    if args.paper_id:
+        papers = get_section_extracted_paper_by_id(conn, cur, args.paper_id)
+    else:
+        papers = get_raw_data_papers(conn, cur, args.dataset_version, args.order_type, args.processing_limit,
+                                     args.offset)
+    loaded_count = len(papers)
+    items_in_file = []
+    file_number = 1
+    create_directory("../" + args.dataset_version, logger)
+    output_file = "../" + args.dataset_version + "/" + args.output_file + "_" + str(args.offset)
+    for i in range(loaded_count):
+        paper = papers[i]
+        paper_id = paper[0]
+        try:
+            paper_text, = get_paper_text(conn, cur, paper_id)
+            paper_abstract, = get_paper_abstract(conn, cur, paper_id)
+            obj = create_raw_map(paper, paper_text, paper_abstract)
+            items_in_file.append(obj)
+            if ((i > 0 and i % args.items_limit_in_file == 0) or i == loaded_count - 1):
+                line = list_to_jsonline(items_in_file)
+                save_to_file(output_file + "_" + str(file_number * args.items_limit_in_file) + ".jsonl", line)
+                file_number += 1
+                items_in_file = []
+            # if not args.paper_id:  # update dataset version only if testing
+            # update_paper_dataset_version(conn, cur, paper_id, args.dataset_version)
+            success_count += 1
+        except Exception as e:
+            failed_count += 1
+            logger.error("Error processing: %s", paper_id)
+            conn, cur = open_database(args.db_host, args.db_username, args.db_password)
+
+        if i % args.logs_per_count == 0 or i == loaded_count - 1:
+            logger.info("checked= %s", i + 1)
+            logger.info("success count= %s", success_count)
+            logger.info("fail count= %s", failed_count)
+
+
+def run(args, logger):
+    global success_count
+    global failed_count
+
+    success_count = 0
+    failed_count = 0
+
+    create_json_files(args, logger)

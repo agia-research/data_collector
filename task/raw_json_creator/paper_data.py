@@ -37,14 +37,3 @@ def create_map(paper, sections):
     obj['section_names'] = section_names
     obj['generalized_section_names'] = generalized_section_names
     return obj
-
-
-def create_raw_map(paper, text, abstract):
-    obj = {}
-    obj['id'] = paper[0]
-    obj['title'] = paper[1]
-    obj['tags'] = get_tags(paper[2])
-    obj['submission_date'] = paper[3].isoformat()
-    obj['article'] = text
-    obj['abstract'] = abstract
-    return obj

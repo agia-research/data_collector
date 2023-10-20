@@ -61,6 +61,14 @@ def get_section_extracted_papers(conn, cur, dataset_version, order_type, limit, 
         (limit, offset))
     return cur.fetchall()
 
+def get_raw_data_papers(conn, cur, dataset_version, order_type, limit, offset=0):
+    global schema
+    cur.execute(
+        '''select p.paper_id, p.name, p.tags, p.submission_date from ''' + schema + '''.paper p 
+         join paper_text pt on p.paper_id =pt.paper_id where pt."text" is not null order by p.submission_date ''' + order_type + ''' limit %s offset %s''',
+        (limit, offset))
+    return cur.fetchall()
+
 def get_section_extracted_top_papers(conn, cur, dataset_version, order_type, limit, offset=0):
     global schema
     cur.execute(
@@ -174,11 +182,19 @@ def get_not_abstract_added_papers(conn, cur, order_type, limit, offset=0):
 def get_paper_text(conn, cur, paper_id):
     global schema
     cur.execute(
-        '''select p.paper_id, pt.text from ''' + schema + '''.paper p join ''' + schema + '''.paper_text pt on 
+        '''select pt."text" from ''' + schema + '''.paper p join ''' + schema + '''.paper_text pt on 
         p.paper_id = pt.paper_id  where p.paper_id = %s''',
         (paper_id,))
     return cur.fetchone()
 
+
+def get_paper_abstract(conn, cur, paper_id):
+    global schema
+    cur.execute(
+        '''select ps."text" from ''' + schema + '''.paper_section ps where ps.section_name = %s and ps.paper_id 
+        = %s''',
+        ('abstract',paper_id,))
+    return cur.fetchone()
 
 def get_paper_sections(conn, cur, paper_id):
     global schema
