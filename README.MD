@@ -1,4 +1,13 @@
-# Data Collector
+# Research Paper Data
+
+## Cleaned dataset
+[Download](https://drive.google.com/drive/folders/1U043xXzeCZ8u6KygbKPzY7GktU6fRnJD?usp=share_link)
+
+## Raw dataset
+[Download](https://drive.google.com/drive/folders/1DwLHbjGddXOJPA9X_upkmhGn1l7Kto5B?usp=share_link)
+
+
+# Data Collector Project
 
 This collect research papers from [arXiv](https://arxiv.org/), extract texts from the papers and devide paper sections.
 These are done by separate tasks.
