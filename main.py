@@ -4,6 +4,7 @@ from datetime import datetime
 from pytz import timezone
 
 import arg_parser
+from task.paper_collector.process import run as paper_collector_run
 from task.abstract.process import run as abstract_run
 from task.download.process import run as download_run
 from task.json_creator.process import run as json_creator_run
@@ -35,6 +36,12 @@ if __name__ == '__main__':
 
     parser, args = arg_parser.parse_args()
     logging.info('Args : %s', args)
+
+    if args.task == 'collect_papers':
+        logger = get_logger('collect_papers.log')
+        logger.info("Paper collectiion started")
+        paper_collector_run(args, logger)
+        logger.info("Paper collectiion finished")
 
     if args.task == 'break_sections':
         logger = get_logger('break_sections.log')

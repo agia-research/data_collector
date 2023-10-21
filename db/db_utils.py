@@ -203,6 +203,13 @@ def get_paper_sections(conn, cur, paper_id):
         (paper_id,))
     return cur.fetchall()
 
+# check the paper is alredy added or not
+def is_already_added(conn, cur, id):
+  global schema
+  cur.execute('''SELECT count(paper_id) FROM '''+schema+'''.paper where paper_id=%s''',(id,))
+  count = cur.fetchone()[0]
+  return count>=1
+
 
 # counts
 def get_total_paper_count(conn, cur):
@@ -230,6 +237,14 @@ def get_paper_work_status_count(conn, cur, work_status_key, work_status_value):
 
 
 # save
+
+
+# add paper id title to database
+def add_paper_to_db(conn, cur, id, title, tags, paper_page, download_url):
+  global schema
+  cur.execute('''INSERT INTO '''+schema+'''.paper(paper_id,name,tags,paper_page,download_url,stage) values (%s, %s, %s, %s, %s, %s)''',(id,title,tags,paper_page,download_url,-1))
+  conn.commit()
+
 def add_paper_text_to_db(conn, cur, id, text):
     global schema
     cur.execute('''INSERT INTO ''' + schema + '''.paper_text(paper_id,text) values (%s, %s)''', (id, text))

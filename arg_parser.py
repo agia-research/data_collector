@@ -5,12 +5,16 @@ def parse_args():
     parser = argparse.ArgumentParser()
 
     # task
-    parser.add_argument("--task", type=str, help="Task name : break_sections,download,json_creator,...")
+    parser.add_argument("--task", type=str, help="Task name : collect_papers,download,break_sections,json_creator,...")
 
     # db
     parser.add_argument("--db_host", type=str, help="Database host url")
     parser.add_argument("--db_username", type=str, help="Database username")
     parser.add_argument("--db_password", type=str, help="Database password")
+
+    # paper collector
+    parser.add_argument("--from_date", type=str, default="2023-01-01", help="From date")
+    parser.add_argument("--to_date", type=str, default="2023-02-01", help="To date")
 
     # files
 

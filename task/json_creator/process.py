@@ -1,5 +1,5 @@
 from db.db_utils import open_database, get_section_extracted_papers, get_paper_sections, update_paper_dataset_version, \
-    get_section_extracted_paper_by_id, get_section_extracted_top_papers
+    get_section_extracted_paper_by_id, get_section_extracted_top_papers, close_database
 from task.json_creator.paper_data import create_map
 from util.file_util import list_to_jsonline, save_to_file, create_directory
 
@@ -44,6 +44,8 @@ def create_json_files(args, logger):
             logger.info("checked= %s", i + 1)
             logger.info("success count= %s", success_count)
             logger.info("fail count= %s", failed_count)
+    close_database(conn, cur)
+
 
 
 def run(args, logger):
